@@ -35,6 +35,8 @@ jobs:
         with:
           node-version: lts/*
           cache: 'npm'
+      - name: Install Typst
+        uses: typst-community/setup-typst@v5
       - name: Install dependencies
         run: npm ci
       - name: Build
