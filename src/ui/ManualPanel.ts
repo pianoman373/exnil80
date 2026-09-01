@@ -5,7 +5,7 @@ export class ManualPanel {
 
 	constructor() {
 		this.root = element('iframe', {
-			src: '/exnil_docs.pdf',
+			src: '/manual.pdf',
 			width: '100%',
 			height: '99.5%',
 			style: {
