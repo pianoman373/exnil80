@@ -80,11 +80,11 @@ export class AudioManager {
     let data = ev.outputBuffer.getChannelData(0);
     let remaining = (this.writePos - this.readPos) & this.bufferMask;
 
-    // while (remaining < data.length) {
-    //   //console.log(`buffer underflow ${(remaining / data.length) * 100}%`);
-    //   this.underflowCallback();
-    //   remaining = (this.writePos - this.readPos) & this.bufferMask;
-    // }
+    while (remaining < data.length) {
+      //console.log(`buffer underflow ${(remaining / data.length) * 100}%`);
+      this.underflowCallback();
+      remaining = (this.writePos - this.readPos) & this.bufferMask;
+    }
     if (remaining > data.length * 4) {
       //console.log('buffer overflow');
       this.readPos = (this.readPos + data.length) & this.bufferMask;

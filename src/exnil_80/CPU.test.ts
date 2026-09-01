@@ -1,4 +1,4 @@
-import { expect, test } from 'vitest';
+import { test } from 'vitest';
 import CPU from './CPU';
 import { assemble } from './Assembler';
 
