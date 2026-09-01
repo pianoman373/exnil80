@@ -43,7 +43,8 @@ export class LoadStatePopup {
 							textContent: 'Load',
 							onclick: async () => {
 								const result = await State.loadFromString(
-									text.value
+									text.value,
+									true
 								);
 								text.value = '';
 								if (!result) {

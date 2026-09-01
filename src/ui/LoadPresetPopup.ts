@@ -52,7 +52,7 @@ export class LoadPresetPopup {
             if (preset.title === 'Ex Nihilo') {
               State.clear();
             } else {
-              await State.loadFromString(preset.state);
+              await State.loadFromString(preset.state, true);
             }
             PopupManager.close();
             Application.loadUI();

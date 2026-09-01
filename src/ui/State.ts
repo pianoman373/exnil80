@@ -233,11 +233,11 @@ export class State {
 		}
 	}
 
-	static async loadFromString(str: string): Promise<boolean> {
+	static async loadFromString(str: string, compressed: boolean): Promise<boolean> {
 		if (str == '') return false;
 
 		try {
-			const json: any = JSON.parse(await decompress(str));
+			const json: any = JSON.parse(compressed ? await decompress(str) : str);
 			State.clear();
 
 			for (let i in json) {
@@ -264,7 +264,7 @@ export class State {
 		}
 	}
 
-	static async saveToString(): Promise<string> {
+	static async saveToString(compressed: boolean): Promise<string> {
 		let obj: any = {};
 		obj.state = localStorage.getItem('state');
 
@@ -275,8 +275,13 @@ export class State {
 				.map((byte) => byte.toString(16).padStart(2, '0'))
 				.join('');
 		}
+		if (compressed) {
+			return await compress(JSON.stringify(obj));
+		}
+		else {
+			return JSON.stringify(obj);
+		}
 
-		//console.log(obj);
-		return await compress(JSON.stringify(obj));
+		
 	}
 }

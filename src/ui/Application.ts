@@ -12,6 +12,37 @@ import { State } from './State.ts';
 import { StoragePanel } from './StoragePanel.ts';
 import { element } from './UIFramework.ts';
 
+const clipboardSave = false;
+
+function downloadFile(contents: string) {
+  var bb = new Blob([contents ], { type: 'text/plain' });
+  var a = document.createElement('a');
+  a.download = 'state.x80';
+  a.href = window.URL.createObjectURL(bb);
+  a.click();
+}
+
+function uploadFile(done: (contents: string) => void) {
+  var input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.x80';
+
+  input.onchange = (e: Event) => { 
+    var target = e.target as HTMLInputElement;
+    var file = target.files![0]; 
+
+    // setting up the reader
+    var reader = new FileReader();
+    reader.readAsText(file);
+
+    // here we tell the reader what to do when it's done reading...
+    reader.onload = readerEvent => {
+      done(readerEvent.target!.result as string);
+    }
+  }
+  input.click();
+}
+
 export class Application {
   private static frontPanel: Exnil80FP;
 
@@ -33,15 +64,21 @@ export class Application {
 					save
 					</span>Save State`,
           onclick: async () => {
-            const state = await State.saveToString();
-            Notifier.notify('Copied state to clipboard');
+            const state = await State.saveToString(true);
+            if (clipboardSave) {
+              Notifier.notify('Copied state to clipboard');
 
-            const textarea = document.createElement('textarea');
-            textarea.textContent = state;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
+              const textarea = document.createElement('textarea');
+              textarea.textContent = state;
+              document.body.appendChild(textarea);
+              textarea.select();
+              document.execCommand('copy');
+              document.body.removeChild(textarea);
+            }
+            else {
+              downloadFile(state);
+            }
+            
           },
         }),
         element('button', {
@@ -49,8 +86,27 @@ export class Application {
 					file_open
 					</span>Load State`,
           onclick: async () => {
-            const contents = new LoadStatePopup();
-            PopupManager.popup(contents.root);
+            if (clipboardSave) {
+              const contents = new LoadStatePopup();
+              PopupManager.popup(contents.root);
+            }
+            else {
+              uploadFile(async (contents) => {
+                const result = await State.loadFromString(
+									contents,
+									true
+								);
+								if (!result) {
+									Notifier.notify(
+										'Error: Invalid or corrupt state file'
+									);
+								}
+                else {
+                  Application.loadUI();
+                }
+              })
+            }
+            
           },
         }),
         element('button', {
