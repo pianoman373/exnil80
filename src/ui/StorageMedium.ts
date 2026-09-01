@@ -10,7 +10,7 @@ export class StorageMedium extends DndItem {
 			const insertedDisk = element('div', {
 				className: 'svg_background container',
 				style: {
-					backgroundImage: `url("/disk_${info.color}_inserted.svg")`,
+					backgroundImage: `url("disk_${info.color}_inserted.svg")`,
 					aspectRatio: '1100/80',
 				},
 			});
@@ -18,7 +18,7 @@ export class StorageMedium extends DndItem {
 			const freeDisk = element('div', {
 				className: 'svg_background container',
 				style: {
-					backgroundImage: `url("/disk_${info.color}.svg")`,
+					backgroundImage: `url("disk_${info.color}.svg")`,
 					aspectRatio: '1100/1075',
 				},
 				children: [
@@ -69,7 +69,7 @@ export class StorageMedium extends DndItem {
 			const background = element('div', {
 				className: 'svg_background container',
 				style: {
-					backgroundImage: 'url("/eeprom.svg")',
+					backgroundImage: 'url("eeprom.svg")',
 					aspectRatio: '900/425',
 				},
 				children: [

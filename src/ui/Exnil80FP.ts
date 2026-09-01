@@ -79,7 +79,7 @@ export class Exnil80FP {
       className: 'svg_background',
       style: {
         position: 'relative',
-        backgroundImage: 'url("/exnil_80.svg")',
+        backgroundImage: 'url("exnil_80.svg")',
         aspectRatio: '4000 / 7575',
         width: '100%',
         pointerEvents: 'none',
@@ -96,7 +96,7 @@ export class Exnil80FP {
       2850,
       200,
       200,
-      '/power_button_on.svg',
+      'power_button_on.svg',
       true,
       async (v) => {
         this.power = v;
@@ -148,7 +148,7 @@ export class Exnil80FP {
       7150,
       150,
       325,
-      '/switch_on_white.svg',
+      'switch_on_white.svg',
       false,
       (v) => {
         if (!v) return;
@@ -164,7 +164,7 @@ export class Exnil80FP {
       7150,
       150,
       325,
-      '/switch_on_white.svg',
+      'switch_on_white.svg',
       false,
       (v) => {
         if (!v) return;
@@ -185,7 +185,7 @@ export class Exnil80FP {
       7150,
       150,
       325,
-      '/switch_on_white.svg',
+      'switch_on_white.svg',
       false,
       (v) => {
         if (!v) return;
@@ -206,7 +206,7 @@ export class Exnil80FP {
       7150,
       150,
       325,
-      '/switch_on_white.svg',
+      'switch_on_white.svg',
       false,
       (v) => {
         if (!v) return;
@@ -222,7 +222,7 @@ export class Exnil80FP {
       7150,
       150,
       325,
-      '/switch_on_blue.svg',
+      'switch_on_blue.svg',
       true,
       (v) => {
         this.alternateDisplay = v;
@@ -235,7 +235,7 @@ export class Exnil80FP {
       7150,
       150,
       325,
-      '/switch_on_white.svg',
+      'switch_on_white.svg',
       false,
       (v) => {
         if (!v) return;
@@ -249,7 +249,7 @@ export class Exnil80FP {
       7150,
       150,
       325,
-      '/switch_on_white.svg',
+      'switch_on_white.svg',
       false,
       (v) => {
         if (!v) return;
@@ -264,7 +264,7 @@ export class Exnil80FP {
       7150,
       150,
       325,
-      '/switch_on_blue.svg',
+      'switch_on_blue.svg',
       true,
       (v) => {
         this.halt = v;
@@ -554,7 +554,7 @@ export class Exnil80FP {
       4000 + y * 125,
       width * 125,
       250,
-      '/keycap_on.svg',
+      'keycap_on.svg',
       toggle,
       (v) => {
         if (v) this.keyDown(keycode);
@@ -571,7 +571,7 @@ export class Exnil80FP {
       y,
       150,
       325,
-      '/switch_on_white.svg',
+      'switch_on_white.svg',
       true,
       (v) => {
         if (v) value = value | (1 << 7);
@@ -584,7 +584,7 @@ export class Exnil80FP {
       y,
       150,
       325,
-      '/switch_on_white.svg',
+      'switch_on_white.svg',
       true,
       (v) => {
         if (v) value = value | (1 << 6);
@@ -597,7 +597,7 @@ export class Exnil80FP {
       y,
       150,
       325,
-      '/switch_on_white.svg',
+      'switch_on_white.svg',
       true,
       (v) => {
         if (v) value = value | (1 << 5);
@@ -610,7 +610,7 @@ export class Exnil80FP {
       y,
       150,
       325,
-      '/switch_on_white.svg',
+      'switch_on_white.svg',
       true,
       (v) => {
         if (v) value = value | (1 << 4);
@@ -624,7 +624,7 @@ export class Exnil80FP {
       y,
       150,
       325,
-      '/switch_on_blue.svg',
+      'switch_on_blue.svg',
       true,
       (v) => {
         if (v) value = value | (1 << 3);
@@ -637,7 +637,7 @@ export class Exnil80FP {
       y,
       150,
       325,
-      '/switch_on_blue.svg',
+      'switch_on_blue.svg',
       true,
       (v) => {
         if (v) value = value | (1 << 2);
@@ -650,7 +650,7 @@ export class Exnil80FP {
       y,
       150,
       325,
-      '/switch_on_blue.svg',
+      'switch_on_blue.svg',
       true,
       (v) => {
         if (v) value = value | (1 << 1);
@@ -663,7 +663,7 @@ export class Exnil80FP {
       y,
       150,
       325,
-      '/switch_on_blue.svg',
+      'switch_on_blue.svg',
       true,
       (v) => {
         if (v) value = value | (1 << 0);
