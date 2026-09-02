@@ -702,7 +702,7 @@ export class Exnil80FP {
     const led = element('div', {
       className: 'svg_background',
       style: {
-        backgroundImage: 'url(/led_on.svg)',
+        backgroundImage: 'url(led_on.svg)',
         position: 'absolute',
         top: (y / 7575) * 100.0 + '%',
         left: (x / 4000) * 100.0 + '%',
