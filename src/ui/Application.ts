@@ -7,7 +7,6 @@ import { Notifier } from './Notifier.ts';
 import { PanelManager } from './PanelManager.ts';
 import { PeripheralsPanel } from './PeripheralsPanel.ts';
 import { PopupManager } from './PopupManager.ts';
-import { SettingsPanel } from './SettingsPanel.ts';
 import { State } from './State.ts';
 import { StoragePanel } from './StoragePanel.ts';
 import { element } from './UIFramework.ts';
@@ -17,7 +16,9 @@ const clipboardSave = false;
 function downloadFile(contents: string) {
   var bb = new Blob([contents ], { type: 'text/plain' });
   var a = document.createElement('a');
-  a.download = 'state.x80';
+  let d = new Date();
+  let y = d.getFullYear().toString().padStart(4, )
+  a.download = `state_${d.getFullYear()}${d.getMonth().toString().padStart(2, '0')}${d.getDate().toString().padStart(2, '0')}_${d.getHours().toString().padStart(2, '0')}${d.getMinutes().toString().padStart(2, '0')}${d.getSeconds().toString().padStart(2, '0')}.x80`;
   a.href = window.URL.createObjectURL(bb);
   a.click();
 }
@@ -138,10 +139,7 @@ export class Application {
     panelManager.addPanel('Manual', 'left', manualPanel.root);
 
     this.frontPanel = new Exnil80FP(peripheralsPanel);
-    panelManager.addPanel('EXNIL 80', 'center', this.frontPanel.root);
-
-    const settingsPanel = new SettingsPanel();
-    panelManager.addPanel('Settings', 'center', settingsPanel.root);
+    panelManager.addPanel('Main Screen', 'center', this.frontPanel.root);
 
     if (localStorage.getItem('notFirstVisit') != 'true') {
       localStorage.setItem('notFirstVisit', 'true');
