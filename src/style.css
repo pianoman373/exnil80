@@ -33,7 +33,7 @@ body {
   color: var(--color_fg1);
   background-color: var(--color_bg1);
   overflow: hidden;
-
+  user-select: none;
   --top_bar_height: 2.5em;
 }
 

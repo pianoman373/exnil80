@@ -388,7 +388,17 @@ export class Exnil80FP {
 
   public async powerUp() {
     this.audio = new AudioManager(1024, () => {
-      this.update(1 / 60);
+      if (this.power) {
+        this.update(1 / 60);
+      }
+      else if (this.audio) {
+        for (var i = 0; i < this.audio.sampleRate / 60; i++) {
+          console.log("pushing dead samples")
+          this.audio.pushSample(0)
+        }
+        
+      }
+      
     });
 
     const romContents = this.loadRom();
