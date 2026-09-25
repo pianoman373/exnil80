@@ -472,6 +472,7 @@ button.disabled:hover {
 }
 
 .printer_paper {
+  user-select: text;
   font-family: 'IBM Plex Mono', monospace;
   word-wrap: break-word;
   max-width: 100%;
